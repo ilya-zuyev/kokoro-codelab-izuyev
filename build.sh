@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+docker ps
+docker version
+env
+
 set -e
 
 if [ "$1" == "release" ]; then
