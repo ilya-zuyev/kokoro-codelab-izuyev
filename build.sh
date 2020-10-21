@@ -1,9 +1,12 @@
 #!/bin/bash
 
 
+echo "== docker info =="
 docker ps
 docker version
+docker info
 
+echo "============================="
 
 echo "==== env before installing minikube =="
 env | sort
