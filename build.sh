@@ -7,15 +7,16 @@ env
 
 echo "============================="
 
-curl -LO https://github.com/kubernetes/minikube/releases/download/v1.14.0/minikube-darwin-amd64 -o minikube
-chmod +x minikube
-./minikube start --driver=docker
-./minikube status
+curl -LO https://github.com/kubernetes/minikube/releases/download/v1.14.0/minikube-darwin-amd64
+local -r MK=./minikube-darwin-amd64 
+chmod +x ${MK}
+${MK} start --driver=docker
+${MK} status
 kubectl get pods
 
 env | sort 
 echo "============================="
-eval $(./minikube docker-env)
+eval $(${MK} docker-env)
 
 env | sort 
 
