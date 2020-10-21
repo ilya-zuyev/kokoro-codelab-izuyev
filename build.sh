@@ -23,8 +23,12 @@ env | sort
 echo "============================="
 kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
 sleep 60
+${MK} status
+kubectl get pods
 
 kubectl port-forward deployment/nginx-deployment 7777:80 &
+sleep 20
+
 curl localhost:7777
 kubectl delete deploy --all
 
