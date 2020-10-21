@@ -6,7 +6,7 @@ env | sort
 echo "============================="
 
 echo "==== memory =="
-cat /proc/meminfo
+system_profiler SPHardwareDataType
 echo "============================="
 
 curl -LO https://github.com/kubernetes/minikube/releases/download/v1.14.0/minikube-darwin-amd64
