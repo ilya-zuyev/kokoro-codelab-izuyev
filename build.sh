@@ -3,8 +3,10 @@
 
 docker ps
 docker version
-env
 
+
+echo "==== env before installing minikube =="
+env | sort
 echo "============================="
 
 curl -LO https://github.com/kubernetes/minikube/releases/download/v1.14.0/minikube-darwin-amd64
@@ -14,13 +16,11 @@ ${MK} start --driver=docker
 ${MK} status
 kubectl get pods
 
-env | sort 
-echo "============================="
 eval $(${MK} docker-env)
-
+echo "==== env after eval \$(minikube docker-env) minikube =="
 env | sort 
-
 echo "============================="
+
 kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
 sleep 60
 ${MK} status
@@ -31,12 +31,4 @@ sleep 20
 
 curl localhost:7777
 kubectl delete deploy --all
-
-set -e
-
-if [ "$1" == "release" ]; then
-    javac -g:none Hello.java
-else
-    javac Hello.java
-fi
 
